@@ -1,0 +1,33 @@
+.npmrc
+
+# os
+.DS_Store
+
+node_modules/
+dist/
+
+# very important
+/**/.env*.local
+/**/.env
+
+# coverage
+coverage/
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# clean-package
+*.backup
+
+# storybook
+storybook-static/
+*storybook.log
+
+*.log
+
+# act
+.secrets
+
+.next/

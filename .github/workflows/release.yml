@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: "0"
+          fetch-tags: true
+
+      - name: Git Setup
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Publish to NPM
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        run: |
+          VERSION=v$(npx lerna ls --json | jq -r '.[] | select(.name | contains("next-ui-core")) | .version')
+          echo "CURRENT_VERSION=$VERSION" >> "$GITHUB_ENV"
+          pnpm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          pnpm run publish 2>&1 | tee publish_logs.txt
+
+      - name: Determine New Version
+        id: version
+        run: |
+          VERSION=v$(npx lerna ls --json | jq -r '.[] | select(.name | contains("next-ui-core")) | .version')
+          echo "NEW_VERSION=$( [ "$CURRENT_VERSION" = "$VERSION" ] && echo "" || echo "$VERSION" )" >> "$GITHUB_OUTPUT"
+
+      - name: Tag Release
+        if: steps.version.outputs.NEW_VERSION
+        env:
+          VERSION: ${{ steps.version.outputs.NEW_VERSION }}
+        run: |
+          git tag -a $VERSION -m "Version $VERSION"
+          git push origin $VERSION
+
+      - name: Create GitHub Release
+        if: steps.version.outputs.NEW_VERSION
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.NEW_VERSION }}
+        run: |
+          npx changelogithub@0.13 --from $CURRENT_VERSION --to $VERSION
