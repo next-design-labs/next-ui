@@ -1,0 +1,31 @@
+{
+  "name": "@next-design-labs/next-ui-uno-preset",
+  "version": "0.0.0",
+  "description": "NEXT UI UnoCSS preset.",
+  "homepage": "https://github.com/next-design-labs/next-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-design-labs/next-ui.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Next Design Labs team",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "vite build -c ../../.config/vite.build.ts",
+    "typecheck": "tsc --noEmit",
+    "prepack": "npx clean-package -c '../../.config/clean.package.js'",
+    "postpack": "npx clean-package restore"
+  },
+  "dependencies": {
+    "@next-design-labs/next-ui-styles": "workspace:*",
+    "@unocss/preset-rem-to-px": "^0.59.4",
+    "unocss-preset-theme": "^0.12.0"
+  },
+  "devDependencies": {
+    "vite": "^5.2.10"
+  },
+  "peerDependencies": {
+    "@unocss/core": ">= 0.57.7",
+    "@unocss/preset-uno": "^0.58.4"
+  }
+}

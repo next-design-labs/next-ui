@@ -1,0 +1,37 @@
+{
+  "name": "@next-design-labs/next-ui-core",
+  "version": "0.0.0",
+  "description": "NEXT UI core components library.",
+  "homepage": "https://github.com/next-design-labs/next-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-design-labs/next-ui.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Next Design Labs team",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "vite build -c ../../.config/vite.build.ts",
+    "typecheck": "tsc --noEmit",
+    "prepack": "npx clean-package -c '../../.config/clean.package.js'",
+    "postpack": "npx clean-package restore"
+  },
+  "dependencies": {
+    "@next-design-labs/next-ui-styles": "workspace:*",
+    "cva": "^1.0.0-beta.1",
+    "react-icons": "^5.1.0",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@mui/base": "^5.0.0-beta.40",
+    "@storybook/react": "^8.0.9",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "vite": "^5.2.10"
+  },
+  "peerDependencies": {
+    "@mui/base": "^5.0.0-beta.37",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

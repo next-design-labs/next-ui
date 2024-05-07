@@ -1,0 +1,314 @@
+import type { Property } from "csstype";
+
+const base = {
+  base_light: "#FBFCFC",
+  base_dark: "#414141",
+};
+
+const categorical = {
+  cat1_180: "#2D4B87",
+  cat1_160: "#4767A7",
+  cat1_140: "#5C7CBB",
+  cat1_120: "#7795D1",
+  cat1: "#95AFE8",
+  cat1_80: "#B3C6EE",
+  cat1_60: "#BDCDEF",
+  cat1_40: "#D2DEF5",
+  cat1_20: "#E7EDF9",
+  cat2_180: "#764419",
+  cat2_160: "#9B5F2A",
+  cat2_140: "#B4733A",
+  cat2_120: "#CD884B",
+  cat2: "#E89E5D",
+  cat2_80: "#EBB07C",
+  cat2_60: "#EFC39B",
+  cat2_40: "#F4D7BD",
+  cat2_20: "#F8EADC",
+  cat3_180: "#0B513E",
+  cat3_160: "#1C6F58",
+  cat3_140: "#328871",
+  cat3_120: "#50A18B",
+  cat3: "#73BAA5",
+  cat3_80: "#8EC6B6",
+  cat3_60: "#A9D3C7",
+  cat3_40: "#C5E2DA",
+  cat3_20: "#E0EFEB",
+  cat4_180: "#131D55",
+  cat4_160: "#283373",
+  cat4_140: "#3C4784",
+  cat4_120: "#525C93",
+  cat4: "#6F749F",
+  cat4_80: "#8A8EB1",
+  cat4_60: "#A6A9C3",
+  cat4_40: "#C3C6D7",
+  cat4_20: "#DFE1EA",
+  cat5_180: "#561C1E",
+  cat5_160: "#722D30",
+  cat5_140: "#8F4245",
+  cat5_120: "#AC5B5E",
+  cat5: "#D17A7C",
+  cat5_80: "#D99395",
+  cat5_60: "#E1ADAE",
+  cat5_40: "#EBC9C9",
+  cat5_20: "#F3E2E3",
+  cat6_180: "#A27B21",
+  cat6_160: "#BC9336",
+  cat6_140: "#CFA74D",
+  cat6_120: "#E3BD66",
+  cat6: "#FFDA8A",
+  cat6_80: "#FEE0A0",
+  cat6_60: "#FDE7B7",
+  cat6_40: "#FDEFCF",
+  cat6_20: "#FCF6E6",
+  cat7_180: "#0A4A61",
+  cat7_160: "#1B6783",
+  cat7_140: "#31809D",
+  cat7_120: "#519FBB",
+  cat7: "#7DC1DB",
+  cat7_80: "#96CCE1",
+  cat7_60: "#AFD8E7",
+  cat7_40: "#C9E5F0",
+  cat7_20: "#E2F1F6",
+  cat8_180: "#45243A",
+  cat8_160: "#613753",
+  cat8_140: "#7B4B6B",
+  cat8_120: "#996487",
+  cat8: "#B67EA3",
+  cat8_80: "#C396B4",
+  cat8_60: "#D1AFC6",
+  cat8_40: "#E0CAD9",
+  cat8_20: "#EDE3EB",
+  cat9_180: "#946D42",
+  cat9_160: "#AD804E",
+  cat9_140: "#C59259",
+  cat9_120: "#D9A162",
+  cat9: "#F2BC66",
+  cat9_80: "#F3C883",
+  cat9_60: "#F5D5A1",
+  cat9_40: "#F8E3C1",
+  cat9_20: "#FAF0DE",
+  cat10_180: "#11415B",
+  cat10_160: "#1E5877",
+  cat10_140: "#2A6C91",
+  cat10_120: "#347BA2",
+  cat10: "#2D86B3",
+  cat10_80: "#569DC1",
+  cat10_60: "#7FB4CF",
+  cat10_40: "#A9CDE0",
+  cat10_20: "#D2E5EE",
+  cat11_180: "#873E4A",
+  cat11_160: "#A1525E",
+  cat11_140: "#B86774",
+  cat11_120: "#CF7D8A",
+  cat11: "#FC9AAA",
+  cat11_80: "#FBADBA",
+  cat11_60: "#FBC0CA",
+  cat11_40: "#FCD5DC",
+  cat11_20: "#FCE9EC",
+  cat12_180: "#375736",
+  cat12_160: "#476C46",
+  cat12_140: "#5C855B",
+  cat12_120: "#719B70",
+  cat12: "#8EBA8C",
+  cat12_80: "#A3C6A2",
+  cat12_60: "#B9D3B8",
+  cat12_40: "#D0E2D0",
+  cat12_20: "#E5EFE6",
+  cat13: "#DE64BD",
+  cat14: "#419393",
+  cat15: "#F5996E",
+  cat16: "#528BBF",
+  cat17: "#EB95AF",
+  cat18: "#73BF9C",
+  cat19: "#B55984",
+  cat20: "#F7B552",
+  cat21: "#869F1E",
+  cat22: "#A4991C",
+  cat23: "#C4931A",
+  cat24: "#E68C17",
+  cat25: "#F27034",
+  cat26: "#FF5252",
+  cat27: "#EC3D57",
+  cat28: "#D8265D",
+};
+
+const common = {
+  ...base,
+  ...categorical,
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Light palette
+ * -----------------------------------------------------------------------------------------------*/
+
+const accentLight = {
+  brand: "#CC0000",
+  primary: "#2064B4",
+  primary_80: "#1775E0",
+  primary_60: "#2064B460",
+  primary_40: "#2064B440",
+  primary_30: "#2064B430",
+  primary_20: "#2064B420",
+  secondary: "#414141",
+  secondary_80: "#6C6B6B",
+  secondary_60: "#41414160",
+  secondary_40: "#41414140",
+  secondary_30: "#41414130",
+  secondary_20: "#41414120",
+};
+
+const atmosphereLight = {
+  atmo1: "#FBFCFC",
+  atmo2: "#F4F5F5",
+  atmo3: "#E8E8E8",
+  atmo4: "#CCCED0",
+};
+
+const semanticLight = {
+  positive: "#478B1A",
+  positive_80: "#709C27",
+  positive_60: "#478B1A60",
+  positive_40: "#478B1A40",
+  positive_20: "#478B1A20",
+  warning: "#F9C846",
+  warning_140: "#F27C27",
+  warning_120: "#F8AC39",
+  warning_60: "#F9C84660",
+  warning_40: "#F9C84640",
+  warning_20: "#F9C84620",
+  negative: "#D43136",
+  negative_120: "#B41B3A",
+  negative_80: "#ED4747",
+  negative_60: "#D4313660",
+  negative_40: "#D4313640",
+  negative_20: "#D4313620",
+  sema6: "#AA00FF",
+  sema10: "#CE703D",
+  sema11: "#D36041",
+  sema12: "#CF4E38",
+  sema13: "#CB3B30",
+  sema14: "#BA2626",
+  sema15: "#6589CB",
+  sema16: "#4D8AC0",
+  sema17: "#3388B1",
+  sema18: "#1A85A1",
+  sema19: "#00838F",
+};
+
+const supportLight = {
+  supp1: "#0F8B8D",
+  supp2: "#734B6D",
+  supp3: "#4E7599",
+  supp4: "#C19C31",
+  supp5: "#546B6B",
+};
+
+const shadowLight = {
+  shad1: "rgba(65, 65, 65, 0.12)",
+  shadow: "0 2px 12px rgba(65,65,65,0.12)",
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Dark palette
+ * -----------------------------------------------------------------------------------------------*/
+
+const accentDark = {
+  brand: "#CC0000",
+  primary: "#639FE3",
+  primary_80: "#82B2E8",
+  primary_60: "#639FE360",
+  primary_40: "#639FE340",
+  primary_30: "#639FE330",
+  primary_20: "#639FE320",
+  secondary: "#CCCCCC",
+  secondary_80: "#9A9999",
+  secondary_60: "#CCCCCC60",
+  secondary_40: "#CCCCCC40",
+  secondary_30: "#CCCCCC30",
+  secondary_20: "#CCCCCC20",
+};
+
+const atmosphereDark = {
+  atmo1: "#313131",
+  atmo2: "#282828",
+  atmo3: "#1F1F1F",
+  atmo4: "#4B4B4B",
+};
+
+const semanticDark = {
+  positive: "#84D930",
+  positive_80: "#70BF21",
+  positive_60: "#84D93060",
+  positive_40: "#84D93040",
+  positive_20: "#84D93020",
+  warning: "#E68C17",
+  warning_140: "#FE6B51",
+  warning_120: "#F57B36",
+  warning_60: "#E68C1760",
+  warning_40: "#E68C1740",
+  warning_20: "#E68C1720",
+  negative: "#FF5E6C",
+  negative_120: "#D92750",
+  negative_80: "#EC3D57",
+  negative_60: "#FF5E6C60",
+  negative_40: "#FF5E6C40",
+  negative_20: "#FF5E6C20",
+  sema6: "#928FFF",
+  sema10: "#F4CAB0",
+  sema11: "#F1B7A0",
+  sema12: "#EEA291",
+  sema13: "#E98B82",
+  sema14: "#E57373",
+  sema15: "#80DEEA",
+  sema16: "#4DD0E1",
+  sema17: "#26C6DA",
+  sema18: "#00ACC1",
+  sema19: "#00A0B7",
+};
+
+const supportDark = {
+  supp2: "#734B6D",
+  supp3: "#4E7599",
+  supp4: "#C19C31",
+  supp5: "#546B6B",
+  supp1: "#0F8B8D",
+};
+
+const shadowDark = {
+  shad1: "rgba(0,0,0,.16)",
+  shadow: "0 3px 5px rgba(0,0,0,.16)",
+};
+
+export const colors = {
+  common,
+  light: {
+    ...accentLight,
+    ...atmosphereLight,
+    ...semanticLight,
+    ...supportLight,
+    ...shadowLight,
+  },
+  dark: {
+    ...accentDark,
+    ...atmosphereDark,
+    ...semanticDark,
+    ...supportDark,
+    ...shadowDark,
+  },
+};
+
+export type HvAccentColor = keyof typeof accentLight;
+export type HvAtmosphereColor = keyof typeof atmosphereLight;
+export type HvBaseColor = keyof typeof base;
+export type HvSemanticColor = keyof typeof semanticLight;
+export type HvSupportColor = keyof typeof supportLight;
+export type HvCategoricalColor = keyof typeof categorical;
+
+/** A type with all the accepted colors from the color palette */
+export type HvColor = keyof typeof colors.common | keyof typeof colors.light;
+
+/**
+ * A type representing an `HvColor` from the palette or any other color string
+ * @example "secondary" "brand" "atmo2" "#FF0000" "purple" "inherit"
+ * */
+export type HvColorAny = HvColor | Property.Color;

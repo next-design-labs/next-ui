@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@next-design-labs/next-ui-core": ["packages/core/src"],
+      "@next-design-labs/next-ui-styles": ["packages/styles/src"]
+    }
+  },
+  "include": [".config", ".storybook", "apps", "packages"],
+  "exclude": ["node_modules", "packages/*/dist"]
+}
