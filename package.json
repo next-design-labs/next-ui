@@ -1,0 +1,70 @@
+{
+  "name": "@next-design-labs/next-ui",
+  "type": "module",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-design-labs/next-ui.git"
+  },
+  "license": "MIT",
+  "author": "Next Design Labs team",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "doc": "pnpm -F next-ui-docs run dev",
+    "dev": "storybook dev -p 6006",
+    "build": "pnpm -F {'packages/**'} run build",
+    "build:doc": "pnpm -F next-ui-docs run build",
+    "build:storybook": "storybook build",
+    "test": "pnpm -F {'packages/**'} run test",
+    "test:coverage": "pnpm -F {'packages/**'} run test --coverage",
+    "check": "biome check --write",
+    "format": "biome format --write",
+    "lint": "biome lint --write",
+    "typecheck": "pnpm -r run typecheck",
+    "publish": "lerna publish",
+    "prepare": "husky install .config/husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@next-design-labs/next-ui-core": "workspace:*",
+    "@next-design-labs/next-ui-uno-preset": "workspace:*",
+    "@storybook/addon-controls": "8.3.7",
+    "@storybook/components": "8.3.7",
+    "@storybook/icons": "^1.2.12",
+    "@storybook/manager-api": "8.3.7",
+    "@storybook/preview-api": "8.3.7",
+    "@storybook/react": "8.3.7",
+    "@storybook/react-vite": "8.3.7",
+    "@storybook/theming": "8.3.7",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.9.1",
+    "@types/react": "^18.3.12",
+    "@unocss/reset": "^0.64.1",
+    "@vitest/coverage-v8": "^2.1.5",
+    "husky": "^9.1.7",
+    "lerna": "^8.1.9",
+    "lint-staged": "^15.2.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "8.3.7",
+    "typescript": "^5.6.3",
+    "unocss": "^0.64.1",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": ["biome check --write"]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "engines": {
+    "node": ">=20.x"
+  },
+  "packageManager": "pnpm@9.14.2"
+}
