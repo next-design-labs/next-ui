@@ -1,0 +1,48 @@
+name: "🐛 Bug report"
+description: Report a bug to help us improve the NEXT UI.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before reporting a bug, please make sure that you have read through our [documentation](https://next-design-labs.github.io) and existing [issues](https://github.com/next-design-labs/next-ui/issues).
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: v1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is. If you intend to submit a PR for this issue, tell us in the description.
+    validations:
+      required: true
+  - type: textarea
+    id: additonal
+    attributes:
+      label: Additional context
+      description: If applicable, add any other context or screenshots here.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: |
+        A minimal reproduction is required unless you are absolutely sure the provided information is enough to understand the problem. 
+        If a report is too vague and has no reproduction, it will receive a "needs reproduction" label or it might be closed.
+
+        You can use one of our templates ([StackBlitz](https://stackblitz.com/github/next-design-labs/next-ui/tree/master/examples/next-ui-vite), [CodeSandBox](https://codesandbox.io/p/sandbox/github/next-design-labs/next-ui/tree/master/examples/next-ui-vite)) for the reproduction link.
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Please provide the following information.
+      placeholder: |
+        - Build tool: (e.g. Vite 4, Webpack 5)
+        - Device & OS: (e.g. Windows 11 laptop, iPhone 13 iOS15)
+        - Browser: (e.g. Chrome 112, Safari 15.4)
+        - Other details (e.g. 4K resolution, ...)

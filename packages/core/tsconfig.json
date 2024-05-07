@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig",
+  "include": ["src", "src/Switch/Switch.stories.tsx"],
+  "exclude": ["node_modules", "dist"]
+}
