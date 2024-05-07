@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig",
+  "include": ["src", "utils/processor.ts"],
+  "exclude": ["node_modules", "dist"]
+}

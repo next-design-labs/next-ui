@@ -1,0 +1,84 @@
+{
+  "name": "@next-design-labs/next-ui",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-design-labs/next-ui.git"
+  },
+  "license": "MIT",
+  "author": "Next Design Labs team",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "doc": "pnpm -F next-ui-docs run dev",
+    "dev": "storybook dev -p 6006",
+    "build": "pnpm -F 'packages/**' run build",
+    "build:doc": "pnpm -F next-ui-docs run build",
+    "build:storybook": "storybook build",
+    "check": "biome check --write",
+    "format": "biome format --write",
+    "lint": "biome lint --write",
+    "typecheck": "pnpm -r run typecheck",
+    "publish": "lerna publish",
+    "prepare": "husky .config/husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.2",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@next-design-labs/next-ui-core": "workspace:*",
+    "@next-design-labs/next-ui-styles": "workspace:*",
+    "@next-design-labs/next-ui-uno-preset": "workspace:*",
+    "@storybook/addon-controls": "^8.3.2",
+    "@storybook/components": "^8.3.2",
+    "@storybook/icons": "^1.2.12",
+    "@storybook/manager-api": "^8.3.2",
+    "@storybook/preview-api": "^8.3.2",
+    "@storybook/react": "^8.3.2",
+    "@storybook/react-vite": "^8.3.2",
+    "@storybook/theming": "^8.3.2",
+    "@types/node": "^22.5.5",
+    "@types/react": "^18.3.8",
+    "@unocss/reset": "^0.62.4",
+    "@vitejs/plugin-react": "^4.3.1",
+    "conventional-changelog": "^6.0.0",
+    "husky": "^9.1.6",
+    "lerna": "^8.1.8",
+    "lint-staged": "^15.2.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^8.3.2",
+    "typescript": "^5.6.2",
+    "unocss": "^0.62.4",
+    "vite": "^5.4.7",
+    "vite-plugin-dts": "^4.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,json,css,md}": [
+      "biome check --write",
+      "biome format --write",
+      "biome lint --write"
+    ]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "packageManager": "pnpm@9.11.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.11.0"
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not IE < 11",
+    "not dead"
+  ]
+}

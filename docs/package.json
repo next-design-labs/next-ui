@@ -1,0 +1,22 @@
+{
+  "name": "next-ui-docs",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve dist"
+  },
+  "dependencies": {
+    "next": "^14.2.5",
+    "nextra": "^3.0.3",
+    "nextra-theme-docs": "^3.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.5.2",
+    "@types/react": "^18.3.5",
+    "@unocss/postcss": "^0.63.4",
+    "typescript": "^5.5.4"
+  }
+}
