@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Publish Setup
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Version Packages
+        id: version_packages
+        run: |
+          npx lerna version --conventional-commits --no-git-tag-version --yes
+          version=$(npx lerna ls --json | jq -r '.[] | select(.name | contains("core")) | .version')
+          echo "version=v${version}" >> $GITHUB_OUTPUT
+
+      - name: Commit and Push Changes
+        run: |
+          version=${{ steps.version_packages.outputs.version }}
+          git add . 
+          git commit -m "chore: release v${version}"
+          git tag "v${version}"
+          git push origin $(git rev-parse --abbrev-ref HEAD) --tags
+
+      - name: GitHub Release
+        run: |
+          npx changelogithub
