@@ -1,0 +1,34 @@
+# os
+.DS_Store
+
+# node
+.npmrc
+
+# build
+dist
+node_modules
+
+# env
+/**/.env*.local
+/**/.env
+
+# coverage
+coverage/
+
+# clean-package
+*.backup
+
+# storybook
+storybook-static/
+*storybook.log
+
+# logs
+*.log
+
+# act
+.secrets
+
+# next.js
+.next
+
+.tmp

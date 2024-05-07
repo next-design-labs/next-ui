@@ -1,0 +1,33 @@
+{
+  "name": "@next-design-labs/next-ui-uno-preset",
+  "version": "0.0.1",
+  "description": "NEXT UI UnoCSS preset.",
+  "homepage": "https://github.com/next-design-labs/next-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-design-labs/next-ui.git"
+  },
+  "license": "MIT",
+  "author": "Next Design Labs team",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@next-design-labs/next-ui-core": "workspace:*"
+  },
+  "devDependencies": {
+    "clean-package": "^2.2.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  },
+  "peerDependencies": {
+    "@unocss/core": "^0.60.0",
+    "@unocss/preset-uno": "^0.60.0"
+  },
+  "clean-package": "../../.config/clean-package.ts"
+}

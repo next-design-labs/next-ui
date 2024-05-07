@@ -1,0 +1,74 @@
+import { Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Get Started
+
+## Play Online
+
+If you just want to play around with NEXT UI without setting up a project, you can use one of our online sandboxes:
+
+<Cards>
+  <Cards.Card
+    title="Open on StackBlitz →"
+    href="https://stackblitz.com/github.com/next-design-labs/next-ui/tree/master/examples/next-ui-vite"
+  />
+  <Cards.Card
+    title="Open on CodeSandbox →"
+    href="https://codesandbox.io/p/sandbox/github/next-design-labs/next-ui/tree/master/examples/next-ui-vite"
+  />
+</Cards>
+
+## Automatic Installation
+Using the [CLI]() is the easiest way to start a NEXT UI project. You can initialize your project directly via the CLI:
+
+```bash [npx]
+npx @next-design-labs/next-ui-cli@latest create
+```
+
+## Manual Installation
+
+If you prefer not to use the CLI, follow these steps to manually set up NEXT UI in your project:
+
+<Steps>
+
+### Install packages
+
+To use NEXT UI in your project, run the following command:
+`react` and `react-dom` are peer dependencies and must be included in your project. 
+
+```bash [npm]
+npm install @next-design-labs/next-ui-core @mui/base
+```
+
+### Provider Setup
+
+It is essential to add the NEXT UI Provider at the root of your application.
+
+```javascript
+import * as React from "react";
+
+// 1. import `Provider` component
+import { Provider } from "@next-design-labs/next-ui-core";
+
+function App() {
+  // 2. Wrap Provider at the root of your app
+  return (
+    <Provider>
+      <YourApplication />
+    </Provider>
+  );
+}
+```
+
+### Use the components
+
+After setting up the provider, you can start using the components provided.
+
+```javascript
+import { HvTypography } from "@hitachivantara/uikit-react-core";
+
+const MyComponent = () => {
+  return <HvTypography>Hello from the NEXT UI team!</HvTypography>;
+};
+```
+
+</Steps>
