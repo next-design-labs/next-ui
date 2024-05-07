@@ -1,0 +1,57 @@
+name: Deploy Documentation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-documentation:
+    name: Deploy Docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Build Docs
+        run: |
+          pnpm run build:doc
+          touch ${{ github.workspace }}/apps/docs/dist/.nojekyll
+        env:
+          DOCS_BASE_PATH: /docs
+        shell: bash
+
+      - name: Deploy Docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          publish_dir: apps/docs/dist
+          destination_dir: docs
+          external_repository: ${{ github.repository_owner }}/next-design-labs.github.io
+          publish_branch: master
+
+  deploy-storybook:
+    name: Deploy Storybook
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Build Storybook
+        run: pnpm run build:storybook
+        shell: bash
+
+      - name: Deploy Storybook
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          publish_dir: storybook-static
+          destination_dir: storybook
+          external_repository: ${{ github.repository_owner }}/next-design-labs.github.io
+          publish_branch: master
