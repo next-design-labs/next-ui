@@ -1,0 +1,51 @@
+{
+  "name": "@next-design-labs/next-ui-figma-plugin",
+  "version": "0.0.1",
+  "description": "NEXT UI Figma plugin.",
+  "homepage": "https://github.com/next-design-labs/next-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-design-labs/next-ui.git"
+  },
+  "license": "MIT",
+  "author": "Next Design Labs team",
+  "main": "code.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "devcode": "vite build --watch --config vite.config.code.ts ",
+    "build": "vite build",
+    "buildcode": "vite build --config vite.config.code.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@figma/plugin-typings": "^1.94.0",
+    "@next-design-labs/next-ui-core": "workspace:*",
+    "@radix-ui/react-collapsible": "^1.1.2",
+    "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.2",
+    "@radix-ui/react-tooltip": "^1.1.6",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.427.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/figma": "^1.0.8",
+    "@types/node": "^16.18.105",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.0.2",
+    "vite": "^5.2.12",
+    "vite-figma-plugin": "^0.0.24",
+    "vite-plugin-singlefile": "^0.13.5"
+  }
+}
