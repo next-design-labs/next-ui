@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Theme Sync Plugin</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 400px;
+      }
+      input {
+        margin-bottom: 10px;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        overflow-x: auto;
+      }
+      #preview {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upload Theme JSON</h1>
+    <input type="file" id="file" />
+    <button id="upload">Preview</button>
+
+    <div id="preview">
+      <h2>Theme Preview</h2>
+      <pre id="themePreview">No theme loaded</pre>
+      <button id="sync" style="display: none;">Sync Theme</button>
+      <button id="delete">Delete All</button>
+    </div>
+
+    <script>
+      const fileInput = document.getElementById('file');
+      const previewDiv = document.getElementById('themePreview');
+      const syncButton = document.getElementById('sync');
+      const deleteButton = document.getElementById('delete');
+
+      document.getElementById('upload').onclick = () => {
+        if (fileInput.files.length === 0) {
+          alert('Please select a file.');
+          return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+          const content = e.target.result;
+          try {
+            const theme = JSON.parse(content);
+            previewDiv.textContent = JSON.stringify(theme, null, 2); // Pretty print the JSON
+            syncButton.style.display = 'block'; // Show the sync button
+            syncButton.onclick = () => {
+              parent.postMessage({ pluginMessage: { type: 'upload-theme', theme } }, '*');
+            };
+          } catch (err) {
+            alert('Invalid JSON file.');
+          }
+        };
+
+        reader.readAsText(fileInput.files[0]);
+      };
+
+      deleteButton.onclick = () => {
+        parent.postMessage({ pluginMessage: { type: 'delete-all' } }, '*');
+      };
+    </script>
+  </body>
+</html>
